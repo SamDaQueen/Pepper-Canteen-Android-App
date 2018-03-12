@@ -1,0 +1,102 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Menu" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="LoginTheme" parent="FirebaseUI">
+        <item name="colorPrimary">@color/colorPrimary1</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark1</item>
+        <item name="colorAccent">@color/colorAccent1</item>
+        <item name="colorButtonNormal">@color/colorAccent1</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:windowBackground">@color/black</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColorHint">@android:color/white</item>
+    </style>
+
+    <style name="FirebaseUI.Text">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="FirebaseUI.Text.Link">
+        <item name="android:textColor">@color/colorSecondary1</item>
+    </style>
+
+    <style name="line" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="categoriesParent" parent="AppTheme">
+        <item name="android:baselineAligned">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+    </style>
+
+    <style name="categoriesChildLeft" parent="AppTheme">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+    </style>
+
+    <style name="categoriesChildRight" parent="AppTheme">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="categoryText" parent="AppTheme">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="categoryTextSmall" parent="AppTheme">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

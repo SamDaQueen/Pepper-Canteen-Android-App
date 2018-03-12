@@ -1,0 +1,327 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mukess.android.pepper.CategoryFragment">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+        <!-- TODO: Update blank fragment layout -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/tea"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/TeaCoffee" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/snacks"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Snacks" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/bombaychat"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/BombayChat" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/frankie"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Frankie" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/south"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/SouthIndian" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lunch"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/LunchDinner" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/sandwich"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Sandwich" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pavbhaji"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/PavBhaji" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/chinese"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Chinese" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/salad"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Salad" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/spldosa"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/SplDosa" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tandoori"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Tandoori" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/punjabi"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Punjabi" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/splpunjabi"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/SplPunjabi" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout style="@style/categoriesParent">
+
+                <LinearLayout
+                    android:id="@+id/kofta"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Kofta" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rice"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Rice" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/categoriesParent"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:id="@+id/starters"
+                    style="@style/categoriesChildLeft">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Starters" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/juices"
+                    style="@style/categoriesChildRight">
+
+                    <TextView
+                        style="@style/categoryText"
+                        android:text="@string/Juice" />
+
+                    <View style="@style/line" />
+
+                    <TextView
+                        style="@style/categoryTextSmall"
+                        android:text="7 items" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

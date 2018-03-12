@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Pepper</string>
+    <string name="canteen_app">Canteen Menu</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Menu</string>
+    <string name="title_dashboard">Cart</string>
+    <string name="title_notifications">Profile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="itemName">Name</string>
+    <string name="itemPrice">Price</string>
+    <string name="quantity">0</string>
+    <string name="increment">+</string>
+    <string name="decrement">-</string>
+
+    <string name="TeaCoffee">Tea &amp; Coffee</string>
+    <string name="Snacks">Snacks</string>
+    <string name="BombayChat">Bombay Chat</string>
+    <string name="Frankie">Frankie</string>
+    <string name="SouthIndian">South Indian</string>
+    <string name="LunchDinner">Lunch &amp; Dinner</string>
+    <string name="Sandwich">Sandwich</string>
+    <string name="PavBhaji">Pav Bhaji</string>
+    <string name="Chinese">Chinese Dishes</string>
+    <string name="Salad">Curd, Salad &amp; Fruits</string>
+    <string name="SplDosa">Special Dosa</string>
+    <string name="Tandoori">Tandoori</string>
+    <string name="SplPunjabi">Special Punjabi</string>
+    <string name="Punjabi">Punjabi</string>
+    <string name="Kofta">Kofta Dishes</string>
+    <string name="Rice">Basmati Rice</string>
+    <string name="Starters">Starters</string>
+    <string name="Juice">Juices &amp; Shakes</string>
+
+</resources>
