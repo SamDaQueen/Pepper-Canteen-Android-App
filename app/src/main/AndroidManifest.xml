@@ -4,26 +4,25 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/app_icon_red_2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/app_icon_red_2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-
         <activity
             android:name=".MenuActivity"
             android:theme="@style/Menu" />
-
+        <activity android:name=".Credits" />
     </application>
 
 </manifest>

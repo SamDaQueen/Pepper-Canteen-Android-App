@@ -8,10 +8,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signout">Sign Out</string>
+    <string name="credits">Credits</string>
+    <string name="history">Order History</string>
+    <string name="profilePic">Profile Picture</string>
+    <string name="profile">Profile</string>
+    <string name="goToCart">Go back to Category</string>
 
     <string name="itemName">Name</string>
     <string name="itemPrice">Price</string>
-    <string name="quantity">0</string>
+    <string name="quantity">"00"</string>
     <string name="increment">+</string>
     <string name="decrement">-</string>
 

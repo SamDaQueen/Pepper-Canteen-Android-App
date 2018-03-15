@@ -34,8 +34,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noTea"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -49,8 +49,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noSnacks"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -67,8 +67,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noChat"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -82,8 +82,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noFrankie"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -100,8 +100,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noSouth"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -115,8 +115,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noLunch"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -133,8 +133,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noSandwich"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -148,8 +148,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noPavbhaji"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -166,8 +166,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noChinese"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -181,8 +181,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noSalad"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -199,8 +199,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noSplDosa"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -214,8 +214,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noTandoori"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -232,8 +232,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noPunjabi"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -247,8 +247,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noSplPunjabi"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -265,8 +265,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noKofta"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -280,8 +280,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noRice"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -300,8 +300,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noStarters"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -315,8 +315,8 @@
                     <View style="@style/line" />
 
                     <TextView
-                        style="@style/categoryTextSmall"
-                        android:text="7 items" />
+                        android:id="@+id/noJuice"
+                        style="@style/categoryTextSmall" />
                 </LinearLayout>
             </LinearLayout>
 

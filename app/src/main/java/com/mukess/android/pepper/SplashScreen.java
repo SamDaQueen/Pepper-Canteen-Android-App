@@ -20,13 +20,9 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         logo = findViewById(R.id.logo);
-        app_name = findViewById(R.id.app_name);
-        canteen = findViewById(R.id.canteen);
 
         final Animation animation = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         logo.startAnimation(animation);
-        app_name.setAnimation(animation);
-        canteen.setAnimation(animation);
 
         final Intent intent = new Intent(this, MainActivity.class);
 //        Thread thread = new Thread()    {

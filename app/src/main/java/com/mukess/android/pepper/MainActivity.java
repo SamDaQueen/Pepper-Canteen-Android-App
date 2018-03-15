@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //loading the default fragment
-        loadFragment(new CategoryFragment());
+        loadFragment(new CategoryFragment());           //loading the default fragment
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -89,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
                                     ))
 //                                            new AuthUI.IdpConfig.FacebookBuilder().build(),
 //                                            new AuthUI.IdpConfig.TwitterBuilder().build()))
-                                    .setTheme(R.style.LoginTheme)
-                                    .setLogo(R.drawable.logo_v1)
+                                    .setLogo(R.drawable.pepper_500px)
                                     .build(),
                             RC_SIGN_IN);
                 }

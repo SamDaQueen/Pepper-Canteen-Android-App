@@ -1,8 +1,11 @@
 package com.mukess.android.pepper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -17,8 +20,10 @@ import java.util.List;
 public class MenuActivity extends AppCompatActivity {
 
     ActionBar toolbar;
+    List<MenuItem> objects;
     private ListView listView;
     private MenuAdapter menuAdapter;
+    private Button goTocart;
 
     //Firebase DB
     private FirebaseDatabase firebaseDatabase;
@@ -30,16 +35,17 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        Bundle bundle = getIntent().getExtras();
         toolbar = getSupportActionBar();
 
         listView = findViewById(R.id.menuitemView);
         List<MenuItem> menuItems = new ArrayList<>();
+        //ArrayList<MenuItem> menuItems = getIntent().getParcelableArrayListExtra("cartItems");
         menuAdapter = new MenuAdapter(this, R.layout.item_menu, menuItems);
         listView.setAdapter(menuAdapter);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
-        Bundle bundle = getIntent().getExtras();
         switch (bundle.getString("category")) {
             case "tea":
                 toolbar.setTitle("Tea & Coffee");
@@ -115,6 +121,7 @@ public class MenuActivity extends AppCompatActivity {
                 break;
         }
         attachDatabaseReadListener();
+        GoToCart();
     }
 
     private void attachDatabaseReadListener() {
@@ -146,5 +153,17 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
+    public void newList(List<MenuItem> obj) {
+        objects = obj;
+    }
 
+    public void GoToCart() {
+        goTocart = findViewById(R.id.goToCart);
+        goTocart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MenuActivity.this, MainActivity.class));
+            }
+        });
+    }
 }

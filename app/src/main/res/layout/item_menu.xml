@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,6 +44,7 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/decrement"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="@string/decrement" />
@@ -60,6 +60,7 @@
                 android:textSize="19sp" />
 
             <Button
+                android:id="@+id/increment"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:text="@string/increment" />
