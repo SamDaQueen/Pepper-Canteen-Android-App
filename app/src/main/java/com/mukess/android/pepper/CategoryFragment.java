@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,26 +20,8 @@ import com.google.firebase.database.ValueEventListener;
 public class CategoryFragment extends Fragment {
 
     protected Intent intent;
-
-    protected TextView notea;
-    protected TextView nosnacks;
-    protected TextView nochat;
-    protected TextView nofrankie;
-    protected TextView nosouth;
-    protected TextView nolunch;
-    protected TextView nosandwich;
-    protected TextView nopavbhaji;
-    protected TextView nochinese;
-    protected TextView nosalad;
-    protected TextView nospldosa;
-    protected TextView notandoori;
-    protected TextView nosplpunjabi;
-    protected TextView nopunjabi;
-    protected TextView nokofta;
-    protected TextView norice;
-    protected TextView nostarters;
-    protected TextView nojuice;
-
+    protected TextView notea, nosnacks, nochat, nofrankie, nosouth, nolunch, nosandwich, nopavbhaji, nochinese, nosalad;
+    protected TextView nospldosa, notandoori, nosplpunjabi, nopunjabi, nokofta, norice, nostarters, nojuice;
     protected LinearLayout tea;
     protected LinearLayout snacks;
     protected LinearLayout chat;
@@ -57,7 +40,6 @@ public class CategoryFragment extends Fragment {
     protected LinearLayout rice;
     protected LinearLayout starters;
     protected LinearLayout juice;
-
     protected FirebaseDatabase firebaseDatabase;
     protected DatabaseReference teadatabaseReference;
     protected DatabaseReference snacksdatabaseReference;
@@ -77,6 +59,7 @@ public class CategoryFragment extends Fragment {
     protected DatabaseReference ricedatabaseReference;
     protected DatabaseReference starterdatabaseReference;
     protected DatabaseReference juicesdatabaseReference;
+    SearchView searchView;
 
     @Nullable
     @Override
@@ -85,6 +68,8 @@ public class CategoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);
 
+        searchView = rootView.findViewById(R.id.search);
+        searchView.setQueryHint("Enter item");
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         //the number of items
