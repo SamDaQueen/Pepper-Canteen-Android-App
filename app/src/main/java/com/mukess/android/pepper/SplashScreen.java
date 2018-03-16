@@ -6,13 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity {
 
     ImageView logo;
-    TextView app_name;
-    TextView canteen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

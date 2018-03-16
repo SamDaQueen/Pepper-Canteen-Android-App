@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
     Context context;
     List<MenuItem> object;
+    ListView listView;
 
     public MenuAdapter(Context context, int resource, List<MenuItem> objects) {
         super(context, resource, objects);
@@ -44,7 +46,9 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
         final MenuItem item = getItem(position);
 
         Name.setText(item.getName());
-        Price.setText(String.valueOf(item.getPrice()));
+        String price = convertView.getResources().getString(R.string.rs);
+
+        Price.setText(price + String.valueOf(item.getPrice()));
         Quantity.setText(String.valueOf(item.getQuantity()));
 
         increment.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +61,6 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
                     MenuItem item1 = item;
                     item1.setQuantity(count);
-
                     object.set(position, item1);
                     ((MenuActivity) context).newList(object);
                 } else

@@ -100,8 +100,12 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
-            if (resultCode == RESULT_OK)
-                Toast.makeText(this, "Welcome to Pepper!", Toast.LENGTH_SHORT).show();
+            if (resultCode == RESULT_OK) {
+                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                if (user != null)
+                    if (user.getDisplayName() != null)
+                        Toast.makeText(this, "Welcome to Pepper, " + user.getDisplayName() + "!", Toast.LENGTH_SHORT).show();
+            }
             else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Sign In Cancelled!", Toast.LENGTH_SHORT).show();
                 finish();

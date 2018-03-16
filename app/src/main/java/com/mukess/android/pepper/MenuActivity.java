@@ -1,10 +1,8 @@
 package com.mukess.android.pepper;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -37,6 +35,7 @@ public class MenuActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         toolbar = getSupportActionBar();
+        toolbar.setDisplayHomeAsUpEnabled(true);
 
         listView = findViewById(R.id.menuitemView);
         List<MenuItem> menuItems = new ArrayList<>();
@@ -121,7 +120,6 @@ public class MenuActivity extends AppCompatActivity {
                 break;
         }
         attachDatabaseReadListener();
-        GoToCart();
     }
 
     private void attachDatabaseReadListener() {
@@ -132,19 +130,15 @@ public class MenuActivity extends AppCompatActivity {
                     MenuItem menuItem = dataSnapshot.getValue(MenuItem.class);
                     menuAdapter.add(menuItem);
                 }
-
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 }
-
                 @Override
                 public void onChildRemoved(DataSnapshot dataSnapshot) {
                 }
-
                 @Override
                 public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                 }
@@ -157,13 +151,9 @@ public class MenuActivity extends AppCompatActivity {
         objects = obj;
     }
 
-    public void GoToCart() {
-        goTocart = findViewById(R.id.goToCart);
-        goTocart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MenuActivity.this, MainActivity.class));
-            }
-        });
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
     }
 }

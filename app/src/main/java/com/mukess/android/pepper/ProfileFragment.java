@@ -2,6 +2,7 @@ package com.mukess.android.pepper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -30,21 +33,22 @@ public class ProfileFragment extends Fragment {
         signoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AuthUI.getInstance().signOut(getActivity());
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                AuthUI.getInstance().signOut(getActivity())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                startActivity(new Intent(getActivity(), MainActivity.class));
+                            }
+                        });
             }
         });
 
         // Get User Details
         textView = rootView.findViewById(R.id.textView);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // Name, email
-            if (user.getDisplayName() != null) {
+        if (user != null)
+            if (user.getDisplayName() != null)
                 textView.setText(user.getDisplayName());
-            }
-            //email = user.getEmail();
-        }
 
         //Displaying Credits
         creditsbtn = rootView.findViewById(R.id.button9);
