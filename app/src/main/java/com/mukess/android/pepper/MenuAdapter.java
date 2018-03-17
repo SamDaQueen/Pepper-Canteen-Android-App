@@ -2,16 +2,16 @@ package com.mukess.android.pepper;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Created by Samreen on 11-03-2018.
@@ -19,17 +19,14 @@ import java.util.List;
 
 public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
-    Context context;
-    List<MenuItem> object;
-    ListView listView;
+    private ArrayList<MenuItem> object;
 
-    public MenuAdapter(Context context, int resource, List<MenuItem> objects) {
+    MenuAdapter(Context context, int resource, ArrayList<MenuItem> objects) {
         super(context, resource, objects);
-        this.context = context;
         this.object = objects;
     }
 
-    @Nullable
+    @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @Nullable ViewGroup parent) {
         if (convertView == null) {
@@ -45,10 +42,11 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
         final MenuItem item = getItem(position);
 
+        assert item != null;
         Name.setText(item.getName());
-        String price = convertView.getResources().getString(R.string.rs);
+        String price = convertView.getResources().getString(R.string.rs) + String.valueOf(item.getPrice());
 
-        Price.setText(price + String.valueOf(item.getPrice()));
+        Price.setText(price);
         Quantity.setText(String.valueOf(item.getQuantity()));
 
         increment.setOnClickListener(new View.OnClickListener() {
@@ -59,10 +57,8 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
                     count++;
                     Quantity.setText(String.valueOf(count));
 
-                    MenuItem item1 = item;
-                    item1.setQuantity(count);
-                    object.set(position, item1);
-                    ((MenuActivity) context).newList(object);
+                    item.setQuantity(count);
+                    object.set(position, item);
                 } else
                     Toast.makeText(getContext(), "Quantity > 25? Invite us to the party :)", Toast.LENGTH_LONG).show();
             }
@@ -72,18 +68,20 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
             public void onClick(View view) {
                 int count = Integer.parseInt(Quantity.getText().toString());
                 if (count > 0) {
-                    Quantity.setText(String.valueOf(--count));
+                    count--;
+                    Quantity.setText(String.valueOf(count));
 
-                    MenuItem item1 = item;
-                    item1.setQuantity(--count);
-
-                    object.set(position, item1);
-                    ((MenuActivity) context).newList(object);
+                    item.setQuantity(count);
+                    object.set(position, item);
                 } else
                     Toast.makeText(getContext(), "Quantity < 0? You're trying to sell??", Toast.LENGTH_LONG).show();
             }
         });
-
         return convertView;
     }
+
+    ArrayList<MenuItem> getCart() {
+        return object;
+    }
+
 }

@@ -13,28 +13,36 @@ import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String ANONYMOUS = "anonymous";
     public static final int RC_SIGN_IN = 1;
+    public ArrayList<com.mukess.android.pepper.MenuItem> arrayList;
     Fragment fragment;
     private String mUsername;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Bundle args = new Bundle();
             switch (item.getItemId()) {
                 case R.id.navigation_menu:
                     fragment = new CategoryFragment();
                     break;
                 case R.id.navigation_cart:
-                    fragment = new CartFragment();
+                    if (arrayList == null || arrayList.isEmpty())
+                        fragment = new CartFragment();
+                    else {
+                        args.putParcelableArrayList("final_order", arrayList);
+                        fragment = new CartFragment();
+                        fragment.setArguments(args);
+                    }
                     break;
                 case R.id.navigation_profile:
                     fragment = new ProfileFragment();
@@ -62,6 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        Bundle bundle = getIntent().getBundleExtra("items");
+        if (bundle != null)
+            arrayList = bundle.getParcelableArrayList("order");
 
         //Firebase Authentication
         mUsername = ANONYMOUS;
@@ -132,6 +144,5 @@ public class MainActivity extends AppCompatActivity {
     private void onSignedOutCleanup() {
         mUsername = ANONYMOUS;
     }
-
 
 }

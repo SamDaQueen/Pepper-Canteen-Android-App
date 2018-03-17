@@ -2,6 +2,7 @@ package com.mukess.android.pepper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -22,48 +23,24 @@ public class CategoryFragment extends Fragment {
     protected Intent intent;
     protected TextView notea, nosnacks, nochat, nofrankie, nosouth, nolunch, nosandwich, nopavbhaji, nochinese, nosalad;
     protected TextView nospldosa, notandoori, nosplpunjabi, nopunjabi, nokofta, norice, nostarters, nojuice;
-    protected LinearLayout tea;
-    protected LinearLayout snacks;
-    protected LinearLayout chat;
-    protected LinearLayout frankie;
-    protected LinearLayout south;
-    protected LinearLayout lunch;
-    protected LinearLayout sandwich;
-    protected LinearLayout pavbhaji;
-    protected LinearLayout chinese;
-    protected LinearLayout salad;
-    protected LinearLayout spldosa;
-    protected LinearLayout tandoori;
-    protected LinearLayout splpunjabi;
-    protected LinearLayout punjabi;
-    protected LinearLayout kofta;
-    protected LinearLayout rice;
-    protected LinearLayout starters;
-    protected LinearLayout juice;
+
+    protected LinearLayout tea, snacks, chat, frankie, south, lunch, sandwich, pavbhaji, chinese, salad;
+    protected LinearLayout spldosa, tandoori, splpunjabi, punjabi, kofta, rice, starters, juice;
+
     protected FirebaseDatabase firebaseDatabase;
-    protected DatabaseReference teadatabaseReference;
-    protected DatabaseReference snacksdatabaseReference;
-    protected DatabaseReference chatdatabaseReference;
-    protected DatabaseReference frankiedatabaseReference;
-    protected DatabaseReference southdatabaseReference;
-    protected DatabaseReference lunchdatabaseReference;
-    protected DatabaseReference sandwichdatabaseReference;
-    protected DatabaseReference pavbhajidatabaseReference;
-    protected DatabaseReference chinesedatabaseReference;
-    protected DatabaseReference saladdatabaseReference;
-    protected DatabaseReference spldosadatabaseReference;
-    protected DatabaseReference tandooridatabaseReference;
-    protected DatabaseReference splpunjabidatabaseReference;
-    protected DatabaseReference punjabidatabaseReference;
-    protected DatabaseReference koftadatabaseReference;
-    protected DatabaseReference ricedatabaseReference;
-    protected DatabaseReference starterdatabaseReference;
-    protected DatabaseReference juicesdatabaseReference;
+
+    protected DatabaseReference teadatabaseReference, snacksdatabaseReference, chatdatabaseReference, frankiedatabaseReference;
+    protected DatabaseReference southdatabaseReference, lunchdatabaseReference, sandwichdatabaseReference;
+    protected DatabaseReference pavbhajidatabaseReference, chinesedatabaseReference, saladdatabaseReference;
+    protected DatabaseReference spldosadatabaseReference, tandooridatabaseReference, splpunjabidatabaseReference;
+    protected DatabaseReference punjabidatabaseReference, koftadatabaseReference, ricedatabaseReference;
+    protected DatabaseReference starterdatabaseReference, juicesdatabaseReference;
+
     SearchView searchView;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);

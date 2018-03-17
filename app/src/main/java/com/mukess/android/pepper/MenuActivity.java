@@ -1,9 +1,9 @@
 package com.mukess.android.pepper;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
@@ -13,18 +13,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MenuActivity extends AppCompatActivity {
 
     ActionBar toolbar;
-    List<MenuItem> objects;
-    private ListView listView;
     private MenuAdapter menuAdapter;
-    private Button goTocart;
 
-    //Firebase DB
-    private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
     private ChildEventListener childEventListener;
 
@@ -35,15 +29,15 @@ public class MenuActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         toolbar = getSupportActionBar();
+        assert toolbar != null;
         toolbar.setDisplayHomeAsUpEnabled(true);
 
-        listView = findViewById(R.id.menuitemView);
-        List<MenuItem> menuItems = new ArrayList<>();
-        //ArrayList<MenuItem> menuItems = getIntent().getParcelableArrayListExtra("cartItems");
+        ListView listView = findViewById(R.id.menuitemView);
+        ArrayList<MenuItem> menuItems = new ArrayList<>();
         menuAdapter = new MenuAdapter(this, R.layout.item_menu, menuItems);
         listView.setAdapter(menuAdapter);
 
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
         switch (bundle.getString("category")) {
             case "tea":
@@ -147,13 +141,20 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    public void newList(List<MenuItem> obj) {
-        objects = obj;
+    @Override
+    public boolean onSupportNavigateUp() {
+        //sending the MenuAdapter object to MainActivity
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("order", menuAdapter.getCart());
+        startActivity(new Intent(this, MainActivity.class).putExtra("items", bundle));
+        return true;
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return true;
+    protected void onPause() {
+        super.onPause();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("order", menuAdapter.getCart());
+        startActivity(new Intent(this, MainActivity.class).putExtra("items", bundle));
     }
 }
