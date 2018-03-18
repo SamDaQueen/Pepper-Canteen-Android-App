@@ -1,18 +1,17 @@
 # Pepper_v0
 
-Rhea and Aditi have to add values to Database<br><br>
-Rhea and Aditi have to update Cart Fragment<br>
+<h1>Stuff to be done after M2</h2>
 <ul>
-  <li>Increment/Decrement the value of quantity according to button press</li>
-  <li>Add item to Cart Fragment</li>
-  <li>Add price to total</li>
+  <li>Cart Total</li>
+  <li>Order History</li>
+  <li>Image Saved to local Storage</li>
+  <li>Search</li>
+  <li>Images in Category Fragment</li>
+  <li>Credits Screen</li>
+  <li>Share with friends Drive Link created</li>
+  <li>Clear Cart</li>
+  <li>UI Improvements</li>
+  <li>Minor bug fixes</li>
 </ul>
-<br>
 
-Dishant has to update Profile Fragment<br>
-<ul>
-  <li>Add username</li>
-  <li>Display username</li>
-  <li>Add sign out button and functionality</li>
-   <li>Add credits button which takes to empty activity named CreditsActivity</li>
-</ul>
+
