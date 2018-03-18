@@ -7,10 +7,4 @@
     <color name="colorAccent">#FF4081</color>
     <color name="black">#000000</color>
     <color name="white">#f0f0f0</color>
-
-    <color name="colorPrimary1">#673AB7</color>
-    <color name="colorPrimaryDark1">#512DA8</color>
-    <color name="colorPrimaryLight1">#EDE7F6</color>
-    <color name="colorAccent1">#7C4DFF</color>
-    <color name="colorSecondary1">#FFC107</color>
 </resources>

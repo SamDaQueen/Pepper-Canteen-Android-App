@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -13,6 +14,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+
+import static com.mukess.android.pepper.CartFragment.checker;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -114,6 +117,8 @@ public class MenuActivity extends AppCompatActivity {
                 break;
         }
         attachDatabaseReadListener();
+        checker = true;
+        Toast.makeText(this, String.valueOf(checker), Toast.LENGTH_SHORT).show();
     }
 
     private void attachDatabaseReadListener() {

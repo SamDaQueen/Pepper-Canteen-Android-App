@@ -8,15 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/*
-    Edited by Dhairya Shah 17-03-2018
-*/
+//Edited by Dhairya Shah 17-03-2018
 
 public class CartFragment extends Fragment {
 
+    public static boolean checker = false;
     static ArrayList<MenuItem> ordered = new ArrayList<>(20);
 
     @Nullable
@@ -28,13 +28,17 @@ public class CartFragment extends Fragment {
 
         Bundle args = getArguments();
         ArrayList<MenuItem> finalCartItems = new ArrayList<>(20);
-        if (args != null)
-            if (args.getParcelableArrayList("final_order") != null)
-                finalCartItems = args.getParcelableArrayList("final_order");
-        assert finalCartItems != null;
-        for (MenuItem menuItem : finalCartItems)   //a foreach loop
-            if (menuItem.getQuantity() != 0)
-                ordered.add(menuItem);
+        Toast.makeText(getActivity(), String.valueOf(checker), Toast.LENGTH_SHORT).show();
+        if (checker) {
+            if (args != null)
+                if (args.getParcelableArrayList("final_order") != null)
+                    finalCartItems = args.getParcelableArrayList("final_order");
+            assert finalCartItems != null;
+            for (MenuItem menuItem : finalCartItems)   //a foreach loop
+                if (menuItem.getQuantity() != 0)
+                    ordered.add(menuItem);
+            checker = false;
+        }
 
         ListView listView = rootView.findViewById(R.id.cartitemView);
         MenuAdapter menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, ordered);
