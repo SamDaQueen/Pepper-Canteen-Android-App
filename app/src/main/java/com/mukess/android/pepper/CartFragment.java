@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,7 @@ public class CartFragment extends Fragment {
 
         Bundle args = getArguments();
         ArrayList<MenuItem> finalCartItems = new ArrayList<>(20);
-        Toast.makeText(getActivity(), String.valueOf(checker), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getActivity(), String.valueOf(checker), Toast.LENGTH_SHORT).show();
         if (checker) {
             if (args != null)
                 if (args.getParcelableArrayList("final_order") != null)

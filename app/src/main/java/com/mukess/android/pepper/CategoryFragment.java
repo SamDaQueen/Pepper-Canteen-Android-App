@@ -80,7 +80,7 @@ public class CategoryFragment extends Fragment {
         sandwichdatabaseReference = firebaseDatabase.getReference("Sandwich");
         pavbhajidatabaseReference = firebaseDatabase.getReference("Pav Bhaji");
         chinesedatabaseReference = firebaseDatabase.getReference("Chinese Dishes");
-        saladdatabaseReference = firebaseDatabase.getReference("Salad");
+        saladdatabaseReference = firebaseDatabase.getReference("Curd, Salad and Fruits");
         spldosadatabaseReference = firebaseDatabase.getReference("Special Dosa");
         tandooridatabaseReference = firebaseDatabase.getReference("Tandoori");
         splpunjabidatabaseReference = firebaseDatabase.getReference("Special Punjabi");

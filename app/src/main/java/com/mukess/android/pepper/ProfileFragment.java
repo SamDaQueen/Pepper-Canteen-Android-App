@@ -83,11 +83,13 @@ public class ProfileFragment extends Fragment {
     }
 
     public void onInviteClicked() {
-        String invitation_title = "Share with friends";
-        String invitation_message = "Canteen Menu on your phone";
+        String invitation_title = "Share Pepper";
+        String invitation_message = "Download Pepper - The Canteen Menu App for MPSTME";
+        String invitation_deep_link = "http://bit.ly/2tYvije";
 
         Intent intent = new AppInviteInvitation.IntentBuilder(invitation_title)
                 .setMessage(invitation_message)
+                .setDeepLink(Uri.parse(invitation_deep_link))
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);
     }

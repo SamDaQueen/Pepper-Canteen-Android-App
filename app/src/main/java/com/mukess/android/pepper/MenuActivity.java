@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -80,8 +79,8 @@ public class MenuActivity extends AppCompatActivity {
                 databaseReference = firebaseDatabase.getReference().child("Chinese Dishes");
                 break;
             case "salad":
-                toolbar.setTitle("Salad");
-                databaseReference = firebaseDatabase.getReference().child("Salad");
+                toolbar.setTitle("Curd, Salad & Fruits");
+                databaseReference = firebaseDatabase.getReference().child("Curd, Salad and Fruits");
                 break;
             case "spldosa":
                 toolbar.setTitle("Special Dosa");
@@ -118,7 +117,7 @@ public class MenuActivity extends AppCompatActivity {
         }
         attachDatabaseReadListener();
         checker = true;
-        Toast.makeText(this, String.valueOf(checker), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, String.valueOf(checker), Toast.LENGTH_SHORT).show();
     }
 
     private void attachDatabaseReadListener() {
