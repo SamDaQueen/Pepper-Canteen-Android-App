@@ -12,8 +12,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-//Edited by Dhairya Shah 17-03-2018
-
 public class CartFragment extends Fragment {
 
     public static boolean checker = false;
@@ -29,8 +27,7 @@ public class CartFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
 
         cartTotal = rootView.findViewById(R.id.total);
-        String cart = "Total: " + getResources().getString(R.string.rs) + total;
-        cartTotal.setText(cart);
+        updateTotal();
 
         Bundle args = getArguments();
         ArrayList<MenuItem> finalCartItems = new ArrayList<>(20);
@@ -45,11 +42,36 @@ public class CartFragment extends Fragment {
                     ordered.add(menuItem);
             checker = false;
         }
-
         ListView listView = rootView.findViewById(R.id.cartitemView);
         MenuAdapter menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, ordered);
         listView.setAdapter(menuAdapter);
         return rootView;
+    }
+
+    void updateTotal() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (!isInterrupted()) {
+                    try {
+                        Thread.sleep(1000);
+                        if (getActivity() == null)
+                            return;
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String cart = " Total: " + getResources().getString(R.string.rs) + total;
+                                cartTotal.setText(cart);
+                            }
+                        });
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        thread.start();
     }
 
 }

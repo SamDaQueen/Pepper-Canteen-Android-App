@@ -36,9 +36,11 @@ public class ProfileFragment extends Fragment {
     private static final int REQUEST_INVITE = 1;
     private static final int PICK_IMAGE = 3;
     private static int count = 0;
+    private static boolean flag = true;
     private Button signoutbtn, creditsbtn, share;
     private TextView textView;
     private ImageView imageView;
+    private TextView hint;
 
     @Nullable
     @Override
@@ -77,8 +79,11 @@ public class ProfileFragment extends Fragment {
         });
 
         //image
-        imageView = rootView.findViewById(R.id.imageView);
-        setImageView();
+        if (flag == true) {
+            imageView = rootView.findViewById(R.id.imageView);
+            hint = rootView.findViewById(R.id.hint);
+            setImageView();
+        }
         return rootView;
     }
 
@@ -115,7 +120,9 @@ public class ProfileFragment extends Fragment {
                     final Uri imageUri = data.getData();
                     final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
                     final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    hint.setVisibility(View.INVISIBLE);
                     imageView.setImageBitmap(selectedImage);
+                    flag = false;
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                     Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_LONG).show();

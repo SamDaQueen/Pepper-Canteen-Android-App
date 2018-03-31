@@ -18,9 +18,9 @@ import static com.mukess.android.pepper.CartFragment.checker;
 
 public class MenuActivity extends AppCompatActivity {
 
+    static ArrayList<MenuItem> menuItems;
     ActionBar toolbar;
     private MenuAdapter menuAdapter;
-
     private DatabaseReference databaseReference;
     private ChildEventListener childEventListener;
 
@@ -35,7 +35,7 @@ public class MenuActivity extends AppCompatActivity {
         toolbar.setDisplayHomeAsUpEnabled(true);
 
         ListView listView = findViewById(R.id.menuitemView);
-        ArrayList<MenuItem> menuItems = new ArrayList<>();
+        menuItems = new ArrayList<>();
         menuAdapter = new MenuAdapter(this, R.layout.item_menu, menuItems);
         listView.setAdapter(menuAdapter);
 
@@ -118,6 +118,7 @@ public class MenuActivity extends AppCompatActivity {
         attachDatabaseReadListener();
         checker = true;
         //Toast.makeText(this, String.valueOf(checker), Toast.LENGTH_SHORT).show();
+
     }
 
     private void attachDatabaseReadListener() {
@@ -161,4 +162,5 @@ public class MenuActivity extends AppCompatActivity {
         bundle.putParcelableArrayList("order", menuAdapter.getCart());
         startActivity(new Intent(this, MainActivity.class).putExtra("items", bundle));
     }
+
 }
