@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.mukess.android.pepper.CartFragment.total;
+
 /**
  * Created by Samreen on 11-03-2018.
  */
@@ -44,7 +46,7 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
         assert item != null;
         Name.setText(item.getName());
-        String price = convertView.getResources().getString(R.string.rs) + String.valueOf(item.getPrice());
+        final String price = convertView.getResources().getString(R.string.rs) + String.valueOf(item.getPrice());
 
         Price.setText(price);
         Quantity.setText(String.valueOf(item.getQuantity()));
@@ -59,6 +61,8 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
                     item.setQuantity(count);
                     object.set(position, item);
+
+                    total += Float.parseFloat(String.valueOf(item.getPrice()));
                 } else
                     Toast.makeText(getContext(), "Quantity > 25? Invite us to the party :)", Toast.LENGTH_LONG).show();
             }
@@ -73,6 +77,8 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
                     item.setQuantity(count);
                     object.set(position, item);
+
+                    total -= Float.parseFloat(String.valueOf(item.getPrice()));
                 } else
                     Toast.makeText(getContext(), "Quantity < 0? You're trying to sell??", Toast.LENGTH_LONG).show();
             }

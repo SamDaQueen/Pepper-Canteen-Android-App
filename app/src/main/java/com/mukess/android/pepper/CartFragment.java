@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,7 +17,9 @@ import java.util.ArrayList;
 public class CartFragment extends Fragment {
 
     public static boolean checker = false;
+    public static float total = 0;
     static ArrayList<MenuItem> ordered = new ArrayList<>(20);
+    TextView cartTotal;
 
     @Nullable
     @Override
@@ -24,6 +27,10 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        cartTotal = rootView.findViewById(R.id.total);
+        String cart = "Total: " + getResources().getString(R.string.rs) + total;
+        cartTotal.setText(cart);
 
         Bundle args = getArguments();
         ArrayList<MenuItem> finalCartItems = new ArrayList<>(20);
@@ -44,4 +51,5 @@ public class CartFragment extends Fragment {
         listView.setAdapter(menuAdapter);
         return rootView;
     }
+
 }

@@ -89,7 +89,6 @@ public class ProfileFragment extends Fragment {
 
         Intent intent = new AppInviteInvitation.IntentBuilder(invitation_title)
                 .setMessage(invitation_message)
-                .setDeepLink(Uri.parse(invitation_deep_link))
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);
     }

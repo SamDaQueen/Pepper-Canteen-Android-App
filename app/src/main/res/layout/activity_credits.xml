@@ -1,30 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.mukess.android.pepper.Credits">
 
+    <LinearLayout
+        style="@style/categoriesParent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            style="@style/categoriesChildLeft"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/categoryText"
+                android:text="Aditi Anup" />
+
+            <View style="@style/line" />
+
+            <TextView
+                style="@style/categoryTextSmall"
+                android:text="B.Tech CS B001" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/categoriesChildRight"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/categoryText"
+                android:text="Rhea Acharya" />
+
+            <View style="@style/line" />
+
+            <TextView
+                style="@style/categoryTextSmall"
+                android:text="B.Tech CS B002" />
+        </LinearLayout>
+    </LinearLayout>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sam" />
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center"
+        android:text="We hope you like our application :)"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dishant" />
+    <LinearLayout
+        style="@style/categoriesParent"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rhea" />
+        <LinearLayout
+            style="@style/categoriesChildLeft"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aditi" />
+            <TextView
+                style="@style/categoryText"
+                android:text="Samreen Reyaz" />
+
+            <View style="@style/line" />
+
+            <TextView
+                style="@style/categoryTextSmall"
+                android:text="B.Tech CS B005" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/categoriesChildRight"
+            android:layout_height="match_parent">
+
+            <TextView
+                style="@style/categoryText"
+                android:text="Dishant Bhatt" />
+
+            <View style="@style/line" />
+
+            <TextView
+                style="@style/categoryTextSmall"
+                android:text="B.Tech CS B013" />
+        </LinearLayout>
+    </LinearLayout>
+
+
 </LinearLayout>
