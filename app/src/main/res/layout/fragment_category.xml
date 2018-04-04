@@ -60,7 +60,8 @@
 
                     <TextView
                         android:id="@+id/noSnacks"
-                        style="@style/categoryTextSmall" />
+                        style="@style/categoryTextSmall"
+                        android:layout_width="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
 

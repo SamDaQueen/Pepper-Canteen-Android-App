@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Pepper_v0.iml" filepath="$PROJECT_DIR$/Pepper_v0.iml" />
-      <module fileurl="file://C:\Users\Dishant bhatt\AndroidStudioProjects\Pepper_v0\Pepper_v0.iml" filepath="C:\Users\Dishant bhatt\AndroidStudioProjects\Pepper_v0\Pepper_v0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Dishant bhatt\AndroidStudioProjects\Pepper_v0\app\app.iml" filepath="C:\Users\Dishant bhatt\AndroidStudioProjects\Pepper_v0\app\app.iml" />
     </modules>
   </component>
 </project>
