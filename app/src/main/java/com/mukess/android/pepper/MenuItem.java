@@ -7,7 +7,7 @@ import android.os.Parcelable;
  * Created by Samreen on 11-03-2018.
  */
 
-public class MenuItem implements Parcelable {
+public class  MenuItem implements Parcelable {
 
     public static final Creator<MenuItem> CREATOR = new Creator<MenuItem>() {
         @Override

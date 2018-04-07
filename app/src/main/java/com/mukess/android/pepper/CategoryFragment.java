@@ -5,17 +5,24 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class CategoryFragment extends Fragment {
@@ -37,6 +44,8 @@ public class CategoryFragment extends Fragment {
     protected DatabaseReference starterdatabaseReference, juicesdatabaseReference;
 
     SearchView searchView;
+    RecyclerView recyclerView;
+    private DatabaseReference mDatabaseReference;
 
     @Nullable
     @Override
@@ -45,9 +54,18 @@ public class CategoryFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_category, container, false);
 
-        searchView = rootView.findViewById(R.id.search);
+        searchView = rootView.findViewById(R.id.searchview);
         searchView.setQueryHint("Enter item");
-        firebaseDatabase = FirebaseDatabase.getInstance();
+        recyclerView = rootView.findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebasesearch();
+            }
+        });
+
 
         //the number of items
         notea = rootView.findViewById(R.id.noTea);
@@ -89,6 +107,8 @@ public class CategoryFragment extends Fragment {
         ricedatabaseReference = firebaseDatabase.getReference("Basmati Rice");
         starterdatabaseReference = firebaseDatabase.getReference("Starters");
         juicesdatabaseReference = firebaseDatabase.getReference("Juices And Shakes");
+        mDatabaseReference = firebaseDatabase.getReference("Basmati Rice");
+
 
         //updating the number of items
         updateCount(teadatabaseReference, notea);
@@ -132,6 +152,40 @@ public class CategoryFragment extends Fragment {
 
         addListenerOnCategories();
         return rootView;
+    }
+
+
+    public void firebasesearch(){
+
+
+        Toast.makeText(getContext(), "Started Search", Toast.LENGTH_LONG).show();
+        Query firebaseSearchQuery = mDatabaseReference.orderByChild("Name").startAt((String) searchView.getQuery()).endAt(searchView.getQuery() + "\uf8ff");
+        FirebaseRecyclerOptions<MenuItem>options = new FirebaseRecyclerOptions.Builder<MenuItem>().build();
+        FirebaseRecyclerAdapter<MenuItem,UsersViewHolder>firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<MenuItem, UsersViewHolder>(options)
+        {
+            @Override
+            protected void onBindViewHolder(@NonNull UsersViewHolder holder, int position, @NonNull MenuItem model) {
+                holder.setDetails(model.getName(),model.getPrice());
+            }
+
+            @Override
+            public UsersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                return null;
+            }
+        };
+        /*FirebaseRecyclerAdapter<MenuItem,UsersViewHolder>firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<MenuItem, UsersViewHolder>(
+                MenuItem.class,
+                R.layout.item_menu,
+                UsersViewHolder.class,
+                mDatabaseReference
+        ) {
+            @Override
+            protected void populateViewHolder(UsersViewHolder viewHolder, MenuItem model, int position) {
+                viewHolder.setDetails(model.getName(),model.getPrice());
+            }
+        };*/
+        recyclerView.setAdapter(firebaseRecyclerAdapter);
+
     }
 
     public void addListenerOnCategories() {
@@ -277,5 +331,30 @@ public class CategoryFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+    }
+
+
+
+    // View Holder Class
+
+    public static class UsersViewHolder extends RecyclerView.ViewHolder {
+
+        View mView;
+
+        public UsersViewHolder(View itemView) {
+            super(itemView);
+
+            mView = itemView;
+        }
+        public void setDetails(String name, float price){
+
+            EditText Name = mView.findViewById(R.id.itemName);
+            EditText Price = mView.findViewById(R.id.itemPrice);
+
+            Name.setText(name);
+            Price.setText((int) price);
+
+        }
+
     }
 }
