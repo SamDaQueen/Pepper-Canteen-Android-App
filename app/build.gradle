@@ -20,13 +20,13 @@ android {
 
 dependencies {
     implementation 'com.google.firebase:firebase-invites:11.8.0'
-    compile 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
     //Authentication
-    compile 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
     //Firebase UI Auth
-    compile 'com.firebaseui:firebase-ui-auth:3.2.2'
+    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
     //Firebase DB
-    compile 'com.google.firebase:firebase-database:11.8.0'
+    implementation 'com.google.firebase:firebase-database:11.8.0'
     // FirebaseUI for Firebase Realtime Database
     implementation 'com.firebaseui:firebase-ui-database:3.2.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -40,7 +40,3 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-
-
-
-

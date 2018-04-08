@@ -25,6 +25,9 @@
             android:name=".MenuActivity"
             android:theme="@style/Menu" />
         <activity android:name=".Credits" />
+        <activity
+            android:name=".OrderHistory"
+            android:theme="@style/Menu" />
     </application>
 
 </manifest>

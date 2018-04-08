@@ -28,6 +28,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -37,10 +38,11 @@ public class ProfileFragment extends Fragment {
     private static final int PICK_IMAGE = 3;
     private static int count = 0;
     private static boolean flag = true;
-    private Button signoutbtn, creditsbtn, share;
+    myDBHandler dbHandler;
     private TextView textView;
     private ImageView imageView;
     private TextView hint;
+    private Button signoutbtn, creditsbtn, share, order;
 
     @Nullable
     @Override
@@ -48,6 +50,8 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        dbHandler = new myDBHandler(getContext(), null, null, 1);
 
         //Sign out Button
         signoutbtn = rootView.findViewById(R.id.button8);
@@ -69,6 +73,19 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        //order history
+        order = rootView.findViewById(R.id.button3);
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringBuffer history = dbHandler.databaseToString();
+                String send = history.toString();
+                Intent intent = new Intent(getActivity(), OrderHistory.class);
+                intent.putExtra("OrderHistory", send);
+                startActivity(intent);
+            }
+        });
+
         //share
         share = rootView.findViewById(R.id.button10);
         share.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +96,7 @@ public class ProfileFragment extends Fragment {
         });
 
         //image
-        if (flag == true) {
+        if (flag) {
             imageView = rootView.findViewById(R.id.imageView);
             hint = rootView.findViewById(R.id.hint);
             setImageView();
@@ -117,7 +134,8 @@ public class ProfileFragment extends Fragment {
                 //Pick image from gallery
                 if (resultCode == RESULT_OK) try {
                     final Uri imageUri = data.getData();
-                    final InputStream imageStream = getActivity().getContentResolver().openInputStream(imageUri);
+                    assert imageUri != null;
+                    final InputStream imageStream = Objects.requireNonNull(getActivity()).getContentResolver().openInputStream(imageUri);
                     final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
                     hint.setVisibility(View.INVISIBLE);
                     imageView.setImageBitmap(selectedImage);
@@ -135,7 +153,7 @@ public class ProfileFragment extends Fragment {
         signoutbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AuthUI.getInstance().signOut(getActivity())
+                AuthUI.getInstance().signOut(Objects.requireNonNull(getActivity()))
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {

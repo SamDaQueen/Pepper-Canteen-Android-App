@@ -17,13 +17,30 @@
 
             <TextView
                 style="@style/categoryText"
-                android:text="Aditi Anup" />
+                android:text="@string/aditi_anup" />
 
             <View style="@style/line" />
 
             <TextView
                 style="@style/categoryTextSmall"
-                android:text="B.Tech CS B001" />
+                android:text="@string/b_tech_cs_b001" />
+
+            <LinearLayout
+                android:id="@+id/aditi"
+                style="@style/linkedin">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/aditi"
+                    android:src="@drawable/linkedin_logo" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/linkUrl"
+                    android:text="@string/aditi" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -32,13 +49,31 @@
 
             <TextView
                 style="@style/categoryText"
-                android:text="Rhea Acharya" />
+                android:text="@string/rhea_acharya" />
 
             <View style="@style/line" />
 
             <TextView
                 style="@style/categoryTextSmall"
-                android:text="B.Tech CS B002" />
+                android:text="@string/b_tech_cs_b002" />
+
+            <LinearLayout
+                android:id="@+id/rhea"
+                style="@style/linkedin">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/rhea"
+                    android:src="@drawable/linkedin_logo" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/linkUrl"
+                    android:text="@string/rhea" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
@@ -50,7 +85,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="serif-monospace"
         android:gravity="center"
-        android:text="We hope you like our application :)"
+        android:text="@string/we_hope_you_like_our_application"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -66,13 +101,30 @@
 
             <TextView
                 style="@style/categoryText"
-                android:text="Samreen Reyaz" />
+                android:text="@string/samreen_reyaz" />
 
             <View style="@style/line" />
 
             <TextView
                 style="@style/categoryTextSmall"
-                android:text="B.Tech CS B005" />
+                android:text="@string/b_tech_cs_b005" />
+
+            <LinearLayout
+                android:id="@+id/samreen"
+                style="@style/linkedin">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/samreen"
+                    android:src="@drawable/linkedin_logo" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/linkUrl"
+                    android:text="@string/samreen" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -81,13 +133,30 @@
 
             <TextView
                 style="@style/categoryText"
-                android:text="Dishant Bhatt" />
+                android:text="@string/dishant_bhatt" />
 
             <View style="@style/line" />
 
             <TextView
                 style="@style/categoryTextSmall"
-                android:text="B.Tech CS B013" />
+                android:text="@string/b_tech_cs_b013" />
+
+            <LinearLayout
+                android:id="@+id/dishant"
+                style="@style/linkedin">
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/dishant"
+                    android:src="@drawable/linkedin_logo" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    style="@style/linkUrl"
+                    android:text="@string/dishant" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

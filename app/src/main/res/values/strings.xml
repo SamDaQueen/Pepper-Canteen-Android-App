@@ -19,6 +19,7 @@
     <string name="quantity">"00"</string>
     <string name="increment">+</string>
     <string name="decrement">-</string>
+    <string name="empty">No previous orders found</string>
 
     <string name="TeaCoffee">Tea &amp; Coffee</string>
     <string name="Snacks">Snacks</string>
@@ -40,5 +41,23 @@
     <string name="Juice">Juices &amp; Shakes</string>
 
     <string name="rs">\u20B9</string>
+    <string name="clear_history">Clear History</string>
+    <string name="proceed">Proceed</string>
+    <string name="clear_cart">Clear Cart</string>
+    <string name="aditi_anup">Aditi Anup</string>
+    <string name="rhea_acharya">Rhea Acharya</string>
+    <string name="b_tech_cs_b013">B.Tech CS B013</string>
+    <string name="dishant_bhatt">Dishant Bhatt</string>
+    <string name="samreen_reyaz">Samreen Reyaz</string>
+    <string name="b_tech_cs_b005">B.Tech CS B005</string>
+    <string name="we_hope_you_like_our_application">We hope you like our application :)</string>
+    <string name="b_tech_cs_b001">B.Tech CS B001</string>
+    <string name="b_tech_cs_b002">B.Tech CS B002</string>
+
+    <string name="samreen"><u>https://in.linkedin.com/in/samreen-reyaz</u></string>
+    <string name="dishant"><u>link</u></string>
+    <string name="aditi"><u>link</u></string>
+    <string name="rhea"><u>https://www.linkedin.com/in/rhea-acharya-51416b141</u></string>
+    <string name="cart">Cart</string>
 
 </resources>

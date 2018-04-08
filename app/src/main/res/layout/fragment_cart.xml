@@ -28,24 +28,33 @@
         <ImageView
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:contentDescription="Cart"
+            android:contentDescription="@string/cart"
             android:src="@drawable/ic_shoppingcart_50" />
 
         <LinearLayout
-            android:layout_width="321dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/total"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2" />
 
             <Button
+                android:id="@+id/clearCart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:text="Proceed"
+                android:layout_marginEnd="10dp"
+                android:text="@string/clear_cart"
+                app:layout_constraintRight_toLeftOf="@id/proceed" />
+
+            <Button
+                android:id="@+id/proceed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:text="@string/proceed"
                 app:layout_constraintRight_toLeftOf="parent" />
         </LinearLayout>
     </LinearLayout>
