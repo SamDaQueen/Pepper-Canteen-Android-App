@@ -58,5 +58,4 @@
                 app:layout_constraintRight_toLeftOf="parent" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

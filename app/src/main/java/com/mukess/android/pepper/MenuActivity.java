@@ -6,6 +6,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,11 +25,18 @@ public class MenuActivity extends AppCompatActivity {
     private MenuAdapter menuAdapter;
     private DatabaseReference databaseReference;
     private ChildEventListener childEventListener;
+    private static final String TAG = "MenuActivity";
+    private AdView mAdView;
+    //App ID: ca-app-pub-4677501330220530~1273349880
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         Bundle bundle = getIntent().getExtras();
         toolbar = getSupportActionBar();

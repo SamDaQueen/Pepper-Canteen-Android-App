@@ -60,4 +60,7 @@
     <string name="rhea"><u>https://www.linkedin.com/in/rhea-acharya-51416b141</u></string>
     <string name="cart">Cart</string>
 
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="add_image">Click here to add image</string>
+
 </resources>

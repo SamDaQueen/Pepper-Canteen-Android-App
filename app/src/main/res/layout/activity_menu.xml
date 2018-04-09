@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.mukess.android.pepper.MenuActivity">
 
     <ListView
         android:id="@+id/menuitemView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="35dp"
+        android:layout_weight="35"
         android:divider="@android:color/transparent"
         android:transcriptMode="alwaysScroll"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_menu" />
 
-</android.support.constraint.ConstraintLayout>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-4677501330220530/7096522209"
+        app:layout_constraintBottom_toBottomOf="parent"></com.google.android.gms.ads.AdView>
+
+</LinearLayout>

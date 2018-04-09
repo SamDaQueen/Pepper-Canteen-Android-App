@@ -44,6 +44,7 @@ public class ProfileFragment extends Fragment {
     private TextView hint;
     private Button signoutbtn, creditsbtn, share, order;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -107,9 +108,10 @@ public class ProfileFragment extends Fragment {
     public void onInviteClicked() {
         String invitation_title = "Share Pepper";
         String invitation_message = "Download Pepper - The Canteen Menu App for MPSTME";
-
+        String invitation_deep_link = "https://play.google.com/store/apps/details?id=com.mukess.android.pepper";
         Intent intent = new AppInviteInvitation.IntentBuilder(invitation_title)
                 .setMessage(invitation_message)
+                .setDeepLink(Uri.parse(invitation_deep_link))
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);
     }

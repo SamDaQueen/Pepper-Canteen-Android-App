@@ -24,6 +24,7 @@ public class CartFragment extends Fragment {
     myDBHandler dbHandler;
     MenuAdapter menuAdapter;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
