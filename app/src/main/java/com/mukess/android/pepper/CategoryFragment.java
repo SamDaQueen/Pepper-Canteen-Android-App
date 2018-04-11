@@ -9,28 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-
-import static com.mukess.android.pepper.CartFragment.checker;
-
 public class CategoryFragment extends Fragment {
 
-    static ArrayList<MenuItem> menuItems;
-    static MenuAdapter menuAdapter;
-    public DatabaseReference hintDatabaseReference;
     protected Intent intent;
     protected TextView notea, nosnacks, nochat, nofrankie, nosouth, nolunch, nosandwich, nopavbhaji, nochinese, nosalad;
     protected TextView nospldosa, notandoori, nosplpunjabi, nopunjabi, nokofta, norice, nostarters, nojuice;
@@ -44,9 +35,7 @@ public class CategoryFragment extends Fragment {
     protected DatabaseReference punjabidatabaseReference, koftadatabaseReference, ricedatabaseReference;
     protected DatabaseReference starterdatabaseReference, juicesdatabaseReference;
     SearchView searchView;
-    ListView listView;
     ScrollView scrollView;
-    private ChildEventListener childEventListener;
 
     @Nullable
     @Override
@@ -58,19 +47,6 @@ public class CategoryFragment extends Fragment {
         firebaseDatabase = FirebaseDatabase.getInstance();
 
         searchView = rootView.findViewById(R.id.searchview);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                searchQuery();
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                listView.setVisibility(View.VISIBLE);
-                return false;
-            }
-        });
 
         //the number of items
         notea = rootView.findViewById(R.id.noTea);
@@ -154,18 +130,18 @@ public class CategoryFragment extends Fragment {
         juice = rootView.findViewById(R.id.juices);
 
         searchView.setQueryHint("Search from " + 220 + " items");
-        listView = rootView.findViewById(R.id.searchListView);
-        listView.setVisibility(View.INVISIBLE);
-        menuItems = new ArrayList<>();
-        menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, menuItems);
-        listView.setAdapter(menuAdapter);
 
         scrollView = rootView.findViewById(R.id.scrollView2);
-        searchView.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onFocusChange(View view, boolean b) {
-                scrollView.setVisibility(View.VISIBLE);
-                listView.setVisibility(View.INVISIBLE);
+            public boolean onQueryTextSubmit(String s) {
+                searchQuery();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
             }
         });
         addListenerOnCategories();
@@ -318,132 +294,48 @@ public class CategoryFragment extends Fragment {
     }
 
     public void searchQuery() {
-        checker = true;
-        scrollView.setVisibility(View.INVISIBLE);
-        listView.setVisibility(View.VISIBLE);
-        //menuAdapter.add();
         String hint = searchView.getQuery().toString().toLowerCase();
-        if (hint.contains("tea") || hint.contains("coffee") || hint.contains("beverages")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Tea & Coffee");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("snacks") || hint.contains("samosa") || hint.contains("idli") || hint.contains("vada") || hint.contains("idli")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Snacks");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("chat") || hint.contains("chaat") || hint.contains("bhel")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Bombay Chat");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("frankie")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Frankie");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("south indian") || hint.contains("uttapa") || hint.contains("chaat")) {
-            hintDatabaseReference = firebaseDatabase.getReference("South Indian");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("lunch") || hint.contains("dinner")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Lunch & Dinner");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("sandwich") || hint.contains("bread") || hint.contains("toast")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Sandwich");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("pav") || hint.contains("bhaji")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Pav Bhaji");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("chinese") || hint.contains("chilli") || hint.contains("soup") || hint.contains("schezwan") || hint.contains("triple") || hint.contains("noodles")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Chinese Dishes");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("salad") || hint.contains("raita") || hint.contains("fruits")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Curd, Salad & Fruits");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("dosa")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Special Dosa");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("paratha") || hint.contains("naan") || hint.contains("roti") || hint.contains("kulcha") || hint.contains("tandoori")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Tandoori");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("paneer")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Punjabi");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("dal") || hint.contains("aloo") || hint.contains("masala") || hint.contains("punjabi")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Special Punjabi");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("kofta")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Kofta Dishes");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("rice") || hint.contains("biryani") || hint.contains("pulao") || hint.contains("khichdi")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Basmati Rice");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("chilly") || hint.contains("crispy") || hint.contains("starters")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Starters");
-            attachDatabaseReadListener();
-            return;
-        }
-        if (hint.contains("juice") || hint.contains("shake") || hint.contains("lassi") || hint.contains("chass")) {
-            hintDatabaseReference = firebaseDatabase.getReference("Juices And Shakes");
-            attachDatabaseReadListener();
-        } else {
+        intent = new Intent(getActivity(), MenuActivity.class);
+        if (hint.contains("tea") || hint.contains("coffee") || hint.contains("beverages"))
+            intent.putExtra("category", "tea");
+        else if (hint.contains("snacks") || hint.contains("samosa") || hint.contains("idli") || hint.contains("vada") || hint.contains("idli"))
+            intent.putExtra("category", "snacks");
+        else if (hint.contains("chat") || hint.contains("chaat") || hint.contains("bhel"))
+            intent.putExtra("category", "chat");
+        else if (hint.contains("frankie"))
+            intent.putExtra("category", "frankie");
+        else if (hint.contains("south indian") || hint.contains("uttapa") || hint.contains("chaat"))
+            intent.putExtra("category", "south");
+        else if (hint.contains("lunch") || hint.contains("dinner"))
+            intent.putExtra("category", "lunch");
+        else if (hint.contains("sandwich") || hint.contains("bread") || hint.contains("toast"))
+            intent.putExtra("category", "sandwich");
+        else if (hint.contains("pav") || hint.contains("bhaji"))
+            intent.putExtra("category", "pavbhaji");
+        else if (hint.contains("chinese") || hint.contains("chilli") || hint.contains("soup") || hint.contains("schezwan") || hint.contains("triple") || hint.contains("noodles"))
+            intent.putExtra("category", "chinese");
+        else if (hint.contains("salad") || hint.contains("raita") || hint.contains("fruits"))
+            intent.putExtra("category", "salad");
+        else if (hint.contains("dosa"))
+            intent.putExtra("category", "spldosa");
+        else if (hint.contains("paratha") || hint.contains("naan") || hint.contains("roti") || hint.contains("kulcha") || hint.contains("tandoori"))
+            intent.putExtra("category", "tandoori");
+        else if (hint.contains("paneer"))
+            intent.putExtra("category", "splpunjabi");
+        else if (hint.contains("dal") || hint.contains("aloo") || hint.contains("masala") || hint.contains("punjabi"))
+            intent.putExtra("category", "punjabi");
+        else if (hint.contains("kofta"))
+            intent.putExtra("category", "kofta");
+        else if (hint.contains("rice") || hint.contains("biryani") || hint.contains("pulao") || hint.contains("khichdi"))
+            intent.putExtra("category", "rice");
+        else if (hint.contains("chilly") || hint.contains("crispy") || hint.contains("starters"))
+            intent.putExtra("category", "starters");
+        else if (hint.contains("juice") || hint.contains("shake") || hint.contains("lassi") || hint.contains("chass"))
+            intent.putExtra("category", "juice");
+        else {
             Toast.makeText(getActivity(), "Item Not Found", Toast.LENGTH_SHORT).show();
-            menuAdapter.clear();
+            return;
         }
+        startActivity(intent);
     }
-
-    private void attachDatabaseReadListener() {
-        if (childEventListener == null) {
-            childEventListener = new ChildEventListener() {
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    MenuItem menuItem = dataSnapshot.getValue(MenuItem.class);
-                    menuAdapter.add(menuItem);
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-                }
-            };
-            hintDatabaseReference.addChildEventListener(childEventListener);
-        }
-    }
-
 }
