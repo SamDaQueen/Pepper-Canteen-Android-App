@@ -44,7 +44,7 @@ public class myDBHandler extends SQLiteOpenHelper {
         contentValues.put(COLUMN_NAME, menuItem.getName());
         contentValues.put(COLUMN_PRICE, menuItem.getPrice());
         contentValues.put(COLUMN_QUANTITY, menuItem.getQuantity());
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat("EEE, d M yyyy HH:mm");
         String date = df.format(Calendar.getInstance().getTime());
         contentValues.put(COLUMN_TIME, date);
         sqLiteDatabase.insert(TABLE_ORDER, null, contentValues);
@@ -54,6 +54,32 @@ public class myDBHandler extends SQLiteOpenHelper {
     public StringBuffer databaseToString() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_ORDER + " ORDER BY " + COLUMN_ID + " DESC";
+
+        //Cursor pointer to a location in your result
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+        cursor.moveToFirst();
+        StringBuffer ex = new StringBuffer();
+        while (!cursor.isAfterLast()) {
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
+            ex.append(".");
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
+            ex.append("\nPrice: ");
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_PRICE)));
+            ex.append("\nQuantity: ");
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY)));
+            ex.append("\nOrdered On: ");
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_TIME)));
+            cursor.moveToNext();
+            ex.append("\n\n");
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        return ex;
+    }
+
+    public StringBuffer databaseOnDate(String date) {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_ORDER + " WHERE " + COLUMN_TIME + " LIKE '%" + date + "%';";
 
         //Cursor pointer to a location in your result
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);

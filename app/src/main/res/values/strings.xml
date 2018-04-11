@@ -62,5 +62,7 @@
 
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="add_image">Click here to add image</string>
+    <string name="view_orders_on_date">View orders on date</string>
+    <string name="view_all">View All</string>
 
 </resources>
