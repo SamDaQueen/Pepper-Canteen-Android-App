@@ -22,10 +22,12 @@ public class MainActivity extends AppCompatActivity {
     public static final String ANONYMOUS = "anonymous";
     public static final int RC_SIGN_IN = 1;
     public ArrayList<com.mukess.android.pepper.MenuItem> arrayList;
+    public static ArrayList<com.mukess.android.pepper.MenuItem> finalArrayList = new ArrayList<>(20);
     Fragment fragment;
     private String mUsername;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -37,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new CategoryFragment();
                     break;
                 case R.id.navigation_cart:
-                    if (arrayList == null || arrayList.isEmpty())
+                    if (finalArrayList == null || finalArrayList.isEmpty())
                         fragment = new CartFragment();
                     else {
-                        args.putParcelableArrayList("final_order", arrayList);
+                        args.putParcelableArrayList("final_order", finalArrayList);
                         fragment = new CartFragment();
                         fragment.setArguments(args);
                     }
@@ -52,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
             return loadFragment(fragment);
         }
     };
+
+    public MainActivity() {
+        mUsername = ANONYMOUS;
+    }
 
     private boolean loadFragment(Fragment fragment) {
         //switching fragments
@@ -74,8 +80,13 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Bundle bundle = getIntent().getBundleExtra("items");
-        if (bundle != null)
+        if (bundle != null) {
             arrayList = bundle.getParcelableArrayList("order");
+            if (arrayList != null && !arrayList.isEmpty())
+                for (com.mukess.android.pepper.MenuItem menuItem : arrayList)   //a foreach loop
+                    if (menuItem.getQuantity() != 0)
+                        finalArrayList.add(menuItem);
+        }
 
         //Firebase Authentication
         mUsername = ANONYMOUS;

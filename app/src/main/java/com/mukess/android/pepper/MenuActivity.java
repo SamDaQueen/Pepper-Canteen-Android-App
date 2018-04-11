@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.ChildEventListener;
@@ -36,6 +38,40 @@ public class MenuActivity extends AppCompatActivity {
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdClosed() {
+                super.onAdClosed();
+                Toast.makeText(getApplicationContext(), "Ad closed", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int i) {
+                super.onAdFailedToLoad(i);
+                Toast.makeText(getApplicationContext(), "Ad failed to load", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                super.onAdLeftApplication();
+                Toast.makeText(getApplicationContext(), "Ad left application", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+            }
+
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+            }
+        });
         mAdView.loadAd(adRequest);
 
         Bundle bundle = getIntent().getExtras();
@@ -158,18 +194,28 @@ public class MenuActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         //sending the MenuAdapter object to MainActivity
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("order", menuAdapter.getCart());
-        startActivity(new Intent(this, MainActivity.class).putExtra("items", bundle));
+        onPause();
         return true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        mAdView.pause();
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("order", menuAdapter.getCart());
         startActivity(new Intent(this, MainActivity.class).putExtra("items", bundle));
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mAdView.destroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mAdView.resume();
+    }
 }

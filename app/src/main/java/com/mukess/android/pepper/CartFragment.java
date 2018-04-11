@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.mukess.android.pepper.MainActivity.finalArrayList;
+
 public class CartFragment extends Fragment {
 
     public static boolean checker = false;
@@ -37,8 +39,8 @@ public class CartFragment extends Fragment {
         updateTotal();
 
         Bundle args = getArguments();
+        //LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, new IntentFilter("Search"));
         finalCartItems = new ArrayList<>(20);
-        //Toast.makeText(getActivity(), String.valueOf(checker), Toast.LENGTH_SHORT).show();
         if (checker) {
             if (args != null)
                 if (args.getParcelableArrayList("final_order") != null)
@@ -48,6 +50,7 @@ public class CartFragment extends Fragment {
                 if (menuItem.getQuantity() != 0)
                     ordered.add(menuItem);
             checker = false;
+            finalArrayList.clear();
         }
         ListView listView = rootView.findViewById(R.id.cartitemView);
         menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, ordered);
@@ -106,4 +109,16 @@ public class CartFragment extends Fragment {
             }
         });
     }
+
+//    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            finalCartItems = intent.getParcelableArrayListExtra("items");
+//            assert finalCartItems != null;
+//            for (MenuItem menuItem : finalCartItems)   //a foreach loop
+//                if (menuItem.getQuantity() != 0)
+//                    ordered.add(menuItem);
+//        }
+//    };
+
 }
