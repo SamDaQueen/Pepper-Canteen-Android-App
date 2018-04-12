@@ -30,7 +30,7 @@ public class OrderHistory extends AppCompatActivity {
             month_x = month + 1;
             day_x = dayOfMonth;
             Toast.makeText(OrderHistory.this, "Selected date is " + day_x + "/" + month_x + "/" + year_x, Toast.LENGTH_SHORT).show();
-            StringBuffer onDate = dbHandler.databaseOnDate(day_x + " " + month_x + " " + year_x);
+            StringBuffer onDate = dbHandler.databaseOnDate(day_x + "/" + month_x + "/" + year_x);
             textView.setText(onDate);
         }
     };

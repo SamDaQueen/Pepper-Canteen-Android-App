@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class myDBHandler extends SQLiteOpenHelper {
 
@@ -44,7 +45,7 @@ public class myDBHandler extends SQLiteOpenHelper {
         contentValues.put(COLUMN_NAME, menuItem.getName());
         contentValues.put(COLUMN_PRICE, menuItem.getPrice());
         contentValues.put(COLUMN_QUANTITY, menuItem.getQuantity());
-        DateFormat df = new SimpleDateFormat("EEE, d M yyyy HH:mm");
+        DateFormat df = new SimpleDateFormat("EEE, d/M/yyyy HH:mm", Locale.ENGLISH);
         String date = df.format(Calendar.getInstance().getTime());
         contentValues.put(COLUMN_TIME, date);
         sqLiteDatabase.insert(TABLE_ORDER, null, contentValues);
@@ -60,15 +61,10 @@ public class myDBHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         StringBuffer ex = new StringBuffer();
         while (!cursor.isAfterLast()) {
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
-            ex.append(".");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
-            ex.append("\nPrice: ");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_PRICE)));
-            ex.append("\nQuantity: ");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY)));
-            ex.append("\nOrdered On: ");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_TIME)));
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)).toUpperCase());
+            ex.append("\nPrice: ").append(cursor.getString(cursor.getColumnIndex(COLUMN_PRICE)));
+            ex.append("\nQuantity: ").append(cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY)));
+            ex.append("\nOrdered On: ").append(cursor.getString(cursor.getColumnIndex(COLUMN_TIME)));
             cursor.moveToNext();
             ex.append("\n\n");
         }
@@ -86,15 +82,10 @@ public class myDBHandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
         StringBuffer ex = new StringBuffer();
         while (!cursor.isAfterLast()) {
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_ID)));
-            ex.append(".");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)));
-            ex.append("\nPrice: ");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_PRICE)));
-            ex.append("\nQuantity: ");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY)));
-            ex.append("\nOrdered On: ");
-            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_TIME)));
+            ex.append(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)).toUpperCase());
+            ex.append("\nPrice: ").append(cursor.getString(cursor.getColumnIndex(COLUMN_PRICE)));
+            ex.append("\nQuantity: ").append(cursor.getString(cursor.getColumnIndex(COLUMN_QUANTITY)));
+            ex.append("\nOrdered On: ").append(cursor.getString(cursor.getColumnIndex(COLUMN_TIME)));
             cursor.moveToNext();
             ex.append("\n\n");
         }
