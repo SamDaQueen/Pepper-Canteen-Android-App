@@ -1,6 +1,7 @@
 package com.mukess.android.pepper;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,7 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,10 +27,15 @@ public class CartFragment extends Fragment {
     public static float total = 0;
     static ArrayList<MenuItem> ordered = new ArrayList<>(20);
     TextView cartTotal;
-    Button clearCart, proceedButton;
+    Button clearCart, proceedButton, backToMenu;
     ArrayList<MenuItem> finalCartItems;
     myDBHandler dbHandler;
     MenuAdapter menuAdapter;
+    ScrollView scrollView;
+    LinearLayout bottomBar;
+    ListView listView;
+    TextView textView;
+    ImageView empty;
 
 
     @Nullable
@@ -36,11 +45,29 @@ public class CartFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_cart, container, false);
-
+        backToMenu = rootView.findViewById(R.id.backToMenuButton);
+        backToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MainActivity.class));
+            }
+        });
         cartTotal = rootView.findViewById(R.id.total);
         updateTotal();
+        listView = rootView.findViewById(R.id.cartitemView);
 
         Bundle args = getArguments();
+        scrollView = rootView.findViewById(R.id.empty);
+        bottomBar = rootView.findViewById(R.id.bottom);
+        if (args == null) {
+            scrollView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.INVISIBLE);
+            bottomBar.setVisibility(View.INVISIBLE);
+        } else {
+            scrollView.setVisibility(View.INVISIBLE);
+            listView.setVisibility(View.VISIBLE);
+            bottomBar.setVisibility(View.VISIBLE);
+        }
         //LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mReceiver, new IntentFilter("Search"));
         finalCartItems = new ArrayList<>(20);
         if (checker) {
@@ -54,7 +81,6 @@ public class CartFragment extends Fragment {
             checker = false;
             finalArrayList.clear();
         }
-        ListView listView = rootView.findViewById(R.id.cartitemView);
         menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, ordered);
         listView.setAdapter(menuAdapter);
 
@@ -63,10 +89,15 @@ public class CartFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 menuAdapter.clear();
+                scrollView.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.INVISIBLE);
+                bottomBar.setVisibility(View.INVISIBLE);
                 total = 0;
             }
         });
         proceedButton = rootView.findViewById(R.id.proceed);
+        textView = rootView.findViewById(R.id.lonely);
+        empty = rootView.findViewById(R.id.imageEmpty);
         dbHandler = new myDBHandler(getContext(), null, null, 1);
         proceedOrder();
         return rootView;

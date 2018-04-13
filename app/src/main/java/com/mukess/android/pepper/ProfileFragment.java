@@ -1,17 +1,13 @@
 package com.mukess.android.pepper;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,8 +22,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Objects;
 
 import static android.app.Activity.RESULT_OK;
@@ -62,8 +56,10 @@ public class ProfileFragment extends Fragment {
         textView = rootView.findViewById(R.id.textView);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null)
-            if (user.getDisplayName() != null)
-                textView.setText(user.getDisplayName());
+            if (user.getDisplayName() != null) {
+                String string = "Welcome to Pepper,\n" + user.getDisplayName();
+                textView.setText(string);
+            }
 
         //Displaying Credits
         creditsbtn = rootView.findViewById(R.id.button9);
@@ -96,12 +92,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        //image
-        if (flag) {
-            imageView = rootView.findViewById(R.id.imageView);
-            hint = rootView.findViewById(R.id.hint);
-            setImageView();
-        }
         return rootView;
     }
 
@@ -131,23 +121,6 @@ public class ProfileFragment extends Fragment {
             } else {
                 Toast.makeText(getActivity(), "Invitation not sent", Toast.LENGTH_SHORT).show();
             }
-        } else {
-            if (requestCode == PICK_IMAGE) {
-                //Pick image from gallery
-                if (resultCode == RESULT_OK) try {
-                    final Uri imageUri = data.getData();
-                    assert imageUri != null;
-                    final InputStream imageStream = Objects.requireNonNull(getActivity()).getContentResolver().openInputStream(imageUri);
-                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
-                    hint.setVisibility(View.INVISIBLE);
-                    imageView.setImageBitmap(selectedImage);
-                    flag = false;
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getActivity(), "Something went wrong", Toast.LENGTH_LONG).show();
-                }
-            } else
-                Toast.makeText(getActivity(), "No image selected", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -162,19 +135,6 @@ public class ProfileFragment extends Fragment {
                                 startActivity(new Intent(getActivity(), MainActivity.class));
                             }
                         });
-            }
-        });
-    }
-
-    public void setImageView() {
-        //setting listener on image
-        imageView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                // Create intent to Open Image applications like Gallery, Google Photos
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
-                return false;
             }
         });
     }

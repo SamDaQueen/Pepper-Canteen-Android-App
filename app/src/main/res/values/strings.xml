@@ -64,5 +64,7 @@
     <string name="add_image">Click here to add image</string>
     <string name="view_orders_on_date">View orders on date</string>
     <string name="view_all">View All</string>
+    <string name="empty_cart">"I feel lonely here…"</string>
+    <string name="go_back_to_menu">Go Back To Menu</string>
 
 </resources>
