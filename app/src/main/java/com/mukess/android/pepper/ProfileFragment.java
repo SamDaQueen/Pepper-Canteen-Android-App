@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +28,8 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
     private static final String TAG = "ABC";
     private static final int REQUEST_INVITE = 1;
-    private static final int PICK_IMAGE = 3;
-    private static int count = 0;
-    private static boolean flag = true;
     myDBHandler dbHandler;
     private TextView textView;
-    private ImageView imageView;
-    private TextView hint;
     private Button signoutbtn, creditsbtn, share, order;
 
 

@@ -321,7 +321,7 @@ public class CategoryFragment extends Fragment {
         else if (hint.contains("paratha") || hint.contains("naan") || hint.contains("roti") || hint.contains("kulcha") || hint.contains("tandoori"))
             intent.putExtra("category", "tandoori");
         else if (hint.contains("paneer"))
-            intent.putExtra("category", "splpunjabi");
+            intent.putExtra("category", "punjabi");
         else if (hint.contains("dal") || hint.contains("aloo") || hint.contains("masala") || hint.contains("punjabi"))
             intent.putExtra("category", "punjabi");
         else if (hint.contains("kofta"))

@@ -6,8 +6,8 @@ android {
         applicationId "com.mukess.android.pepper"
         minSdkVersion 23
         targetSdkVersion 26
-        versionCode 7
-        versionName "almost final"
+        versionCode 8
+        versionName "with images"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

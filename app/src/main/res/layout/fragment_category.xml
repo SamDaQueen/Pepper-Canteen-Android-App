@@ -48,7 +48,8 @@
 
                     <LinearLayout
                         android:id="@+id/tea"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/tea_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -63,7 +64,8 @@
 
                     <LinearLayout
                         android:id="@+id/snacks"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/snacks_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -82,7 +84,8 @@
 
                     <LinearLayout
                         android:id="@+id/bombaychat"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/chat_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -97,7 +100,8 @@
 
                     <LinearLayout
                         android:id="@+id/frankie"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/frankie_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -115,7 +119,8 @@
 
                     <LinearLayout
                         android:id="@+id/south"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/south_indian_dosa">
 
                         <TextView
                             style="@style/categoryText"
@@ -130,7 +135,8 @@
 
                     <LinearLayout
                         android:id="@+id/lunch"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/lunch_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -148,7 +154,8 @@
 
                     <LinearLayout
                         android:id="@+id/sandwich"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/sandwich_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -163,7 +170,8 @@
 
                     <LinearLayout
                         android:id="@+id/pavbhaji"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/pav_bhaji_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -181,7 +189,8 @@
 
                     <LinearLayout
                         android:id="@+id/chinese"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/chinese_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -196,7 +205,8 @@
 
                     <LinearLayout
                         android:id="@+id/salad"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/curd_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -214,7 +224,8 @@
 
                     <LinearLayout
                         android:id="@+id/spldosa"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/spl_dosa_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -229,7 +240,8 @@
 
                     <LinearLayout
                         android:id="@+id/tandoori"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/tandoori_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -247,7 +259,8 @@
 
                     <LinearLayout
                         android:id="@+id/punjabi"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/punjabi_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -262,7 +275,8 @@
 
                     <LinearLayout
                         android:id="@+id/splpunjabi"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/spl_punjabi_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -280,7 +294,8 @@
 
                     <LinearLayout
                         android:id="@+id/kofta"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/kofta_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -295,7 +310,8 @@
 
                     <LinearLayout
                         android:id="@+id/rice"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/rice_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -315,7 +331,8 @@
 
                     <LinearLayout
                         android:id="@+id/starters"
-                        style="@style/categoriesChildLeft">
+                        style="@style/categoriesChildLeft"
+                        android:background="@drawable/starters_edited">
 
                         <TextView
                             style="@style/categoryText"
@@ -330,7 +347,8 @@
 
                     <LinearLayout
                         android:id="@+id/juices"
-                        style="@style/categoriesChildRight">
+                        style="@style/categoriesChildRight"
+                        android:background="@drawable/shake_edited">
 
                         <TextView
                             style="@style/categoryText"
