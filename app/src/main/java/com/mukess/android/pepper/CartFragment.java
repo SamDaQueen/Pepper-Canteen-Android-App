@@ -16,8 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.mukess.android.pepper.MainActivity.finalArrayList;
 
@@ -53,13 +55,14 @@ public class CartFragment extends Fragment {
             }
         });
         cartTotal = rootView.findViewById(R.id.total);
-        updateTotal();
         listView = rootView.findViewById(R.id.cartitemView);
+        menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, ordered);
+        listView.setAdapter(menuAdapter);
 
         Bundle args = getArguments();
         scrollView = rootView.findViewById(R.id.empty);
         bottomBar = rootView.findViewById(R.id.bottom);
-        if (args == null) {
+        if (args == null && menuAdapter.isEmpty()) {
             scrollView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.INVISIBLE);
             bottomBar.setVisibility(View.INVISIBLE);
@@ -81,8 +84,6 @@ public class CartFragment extends Fragment {
             checker = false;
             finalArrayList.clear();
         }
-        menuAdapter = new MenuAdapter(getActivity(), R.layout.item_menu, ordered);
-        listView.setAdapter(menuAdapter);
 
         clearCart = rootView.findViewById(R.id.clearCart);
         clearCart.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +101,7 @@ public class CartFragment extends Fragment {
         empty = rootView.findViewById(R.id.imageEmpty);
         dbHandler = new myDBHandler(getContext(), null, null, 1);
         proceedOrder();
+        updateTotal();
         return rootView;
     }
 
@@ -107,7 +109,7 @@ public class CartFragment extends Fragment {
         Thread thread = new Thread() {
             @Override
             public void run() {
-                while (!isInterrupted()) {
+                while (!isInterrupted() && !menuAdapter.isEmpty()) {
                     try {
                         Thread.sleep(1000);
                         if (getActivity() == null)
@@ -133,7 +135,7 @@ public class CartFragment extends Fragment {
         proceedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Objects.requireNonNull(getActivity()));
                 alertDialogBuilder.setMessage("Proceed to counter for cash payment. Your order will be saved in history. Are you sure you want to continue?");
                 alertDialogBuilder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                     @Override
@@ -144,6 +146,7 @@ public class CartFragment extends Fragment {
                                 dbHandler.addProduct(menuItem);
                         menuAdapter.clear();
                         dbHandler.databaseToString();
+                        Toast.makeText(getActivity(), "Your order has been saved. Go to 'Profile>Order History' to check previous orders.", Toast.LENGTH_LONG).show();
                     }
                 });
                 alertDialogBuilder.setNegativeButton("No, I changed my mind", new DialogInterface.OnClickListener() {

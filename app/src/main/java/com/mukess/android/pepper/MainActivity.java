@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String ANONYMOUS = "anonymous";
     public static final int RC_SIGN_IN = 1;
-    public ArrayList<com.mukess.android.pepper.MenuItem> arrayList;
     public static ArrayList<com.mukess.android.pepper.MenuItem> finalArrayList = new ArrayList<>(20);
+    public ArrayList<com.mukess.android.pepper.MenuItem> arrayList;
     Fragment fragment;
     private String mUsername;
     private FirebaseAuth mFirebaseAuth;
@@ -130,8 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 if (user != null)
                     if (user.getDisplayName() != null)
                         Toast.makeText(this, "Welcome to Pepper, " + user.getDisplayName() + "!", Toast.LENGTH_SHORT).show();
-            }
-            else if (resultCode == RESULT_CANCELED) {
+            } else if (resultCode == RESULT_CANCELED) {
                 Toast.makeText(this, "Sign In Cancelled!", Toast.LENGTH_SHORT).show();
                 finish();
             }

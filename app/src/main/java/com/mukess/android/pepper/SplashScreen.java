@@ -24,8 +24,8 @@ public class SplashScreen extends AppCompatActivity {
 
         final Animation animation = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         logo.startAnimation(animation);
-
         final Intent intent = new Intent(this, MainActivity.class);
+
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {

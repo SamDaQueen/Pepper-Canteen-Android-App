@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -17,17 +16,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.mukess.android.pepper.CartFragment.checker;
 
 public class MenuActivity extends AppCompatActivity {
 
+    private static final String TAG = "MenuActivity";
     static ArrayList<MenuItem> menuItems;
     ActionBar toolbar;
     private MenuAdapter menuAdapter;
     private DatabaseReference databaseReference;
     private ChildEventListener childEventListener;
-    private static final String TAG = "MenuActivity";
     private AdView mAdView;
     //App ID: ca-app-pub-4677501330220530~1273349880
 
@@ -42,19 +42,19 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onAdClosed() {
                 super.onAdClosed();
-                Toast.makeText(getApplicationContext(), "Ad closed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Ad closed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdFailedToLoad(int i) {
                 super.onAdFailedToLoad(i);
-                Toast.makeText(getApplicationContext(), "Ad failed to load", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Ad failed to load", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdLeftApplication() {
                 super.onAdLeftApplication();
-                Toast.makeText(getApplicationContext(), "Ad left application", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "Ad left application", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -86,7 +86,8 @@ public class MenuActivity extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-        switch (bundle.getString("category")) {
+        assert bundle != null;
+        switch (Objects.requireNonNull(bundle.getString("category"))) {
             case "tea":
                 toolbar.setTitle("Tea & Coffee");
                 databaseReference = firebaseDatabase.getReference().child("Tea & Coffee");
@@ -174,15 +175,19 @@ public class MenuActivity extends AppCompatActivity {
                     MenuItem menuItem = dataSnapshot.getValue(MenuItem.class);
                     menuAdapter.add(menuItem);
                 }
+
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
                 }
+
                 @Override
                 public void onChildRemoved(DataSnapshot dataSnapshot) {
                 }
+
                 @Override
                 public void onChildMoved(DataSnapshot dataSnapshot, String s) {
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
                 }
