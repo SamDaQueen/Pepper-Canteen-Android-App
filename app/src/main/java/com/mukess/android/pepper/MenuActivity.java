@@ -5,10 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static com.mukess.android.pepper.CartFragment.checker;
+import static com.mukess.android.pepper.CartFragment.total;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -28,7 +27,8 @@ public class MenuActivity extends AppCompatActivity {
     private MenuAdapter menuAdapter;
     private DatabaseReference databaseReference;
     private ChildEventListener childEventListener;
-    private AdView mAdView;
+    private TextView textView;
+    //private AdView mAdView;
     //App ID: ca-app-pub-4677501330220530~1273349880
 
     @Override
@@ -36,43 +36,43 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        mAdView = findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.setAdListener(new AdListener() {
-            @Override
-            public void onAdClosed() {
-                super.onAdClosed();
-                //Toast.makeText(getApplicationContext(), "Ad closed", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdFailedToLoad(int i) {
-                super.onAdFailedToLoad(i);
-                //Toast.makeText(getApplicationContext(), "Ad failed to load", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdLeftApplication() {
-                super.onAdLeftApplication();
-                //Toast.makeText(getApplicationContext(), "Ad left application", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onAdOpened() {
-                super.onAdOpened();
-            }
-
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-            }
-
-            @Override
-            public void onAdClicked() {
-                super.onAdClicked();
-            }
-        });
-        mAdView.loadAd(adRequest);
+//        mAdView = findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder().build();
+//        mAdView.setAdListener(new AdListener() {
+//            @Override
+//            public void onAdClosed() {
+//                super.onAdClosed();
+//                //Toast.makeText(getApplicationContext(), "Ad closed", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onAdFailedToLoad(int i) {
+//                super.onAdFailedToLoad(i);
+//                //Toast.makeText(getApplicationContext(), "Ad failed to load", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onAdLeftApplication() {
+//                super.onAdLeftApplication();
+//                //Toast.makeText(getApplicationContext(), "Ad left application", Toast.LENGTH_SHORT).show();
+//            }
+//
+//            @Override
+//            public void onAdOpened() {
+//                super.onAdOpened();
+//            }
+//
+//            @Override
+//            public void onAdLoaded() {
+//                super.onAdLoaded();
+//            }
+//
+//            @Override
+//            public void onAdClicked() {
+//                super.onAdClicked();
+//            }
+//        });
+//        mAdView.loadAd(adRequest);
 
         Bundle bundle = getIntent().getExtras();
         toolbar = getSupportActionBar();
@@ -161,6 +161,8 @@ public class MenuActivity extends AppCompatActivity {
                 databaseReference = firebaseDatabase.getReference().child("Juices And Shakes");
                 break;
         }
+        textView = findViewById(R.id.totalMenu);
+        updateTotal();
         attachDatabaseReadListener();
         checker = true;
         //Toast.makeText(this, String.valueOf(checker), Toast.LENGTH_SHORT).show();
@@ -203,24 +205,36 @@ public class MenuActivity extends AppCompatActivity {
         return true;
     }
 
+    private void updateTotal() {
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                while (!isInterrupted()) {
+                    try {
+                        Thread.sleep(1000);
+                        MenuActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                String cart = " Cart Total: " + getResources().getString(R.string.rs) + total;
+                                textView.setText(cart);
+                            }
+                        });
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+        thread.start();
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
-        mAdView.pause();
+        //mAdView.pause();
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("order", menuAdapter.getCart());
         startActivity(new Intent(this, MainActivity.class).putExtra("items", bundle));
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mAdView.destroy();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mAdView.resume();
-    }
 }

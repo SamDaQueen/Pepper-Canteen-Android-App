@@ -6,8 +6,10 @@
     <!--<color name="colorPrimaryLight">#ff6659</color>-->
     <color name="colorPrimary">#d50000</color>
     <color name="colorPrimaryDark">#9b0000</color>
-    <color name="colorPrimaryLight">#ff5131</color>
+    <color name="colorPrimaryLight">#F44336</color>
     <color name="colorAccent">#E53935</color>
     <color name="black">#000000</color>
     <color name="white">#f0f0f0</color>
 </resources>
+
+    <!--#ff6659-->

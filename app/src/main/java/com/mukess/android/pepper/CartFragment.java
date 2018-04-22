@@ -127,7 +127,6 @@ public class CartFragment extends Fragment {
                 }
             }
         };
-
         thread.start();
     }
 
@@ -146,7 +145,11 @@ public class CartFragment extends Fragment {
                                 dbHandler.addProduct(menuItem);
                         menuAdapter.clear();
                         dbHandler.databaseToString();
-                        Toast.makeText(getActivity(), "Your order has been saved. Go to 'Profile>Order History' to check previous orders.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Your order has been saved.\nGo to 'Profile>Order History' to check previous orders.", Toast.LENGTH_LONG).show();
+                        menuAdapter.clear();
+                        scrollView.setVisibility(View.VISIBLE);
+                        listView.setVisibility(View.INVISIBLE);
+                        bottomBar.setVisibility(View.INVISIBLE);
                     }
                 });
                 alertDialogBuilder.setNegativeButton("No, I changed my mind", new DialogInterface.OnClickListener() {

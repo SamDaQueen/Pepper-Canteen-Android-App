@@ -29,8 +29,7 @@ public class ProfileFragment extends Fragment {
     private static final String TAG = "ABC";
     private static final int REQUEST_INVITE = 1;
     myDBHandler dbHandler;
-    private TextView textView;
-    private Button signoutbtn, creditsbtn, share, order;
+    private Button signoutbtn;
 
 
     @Nullable
@@ -47,7 +46,7 @@ public class ProfileFragment extends Fragment {
         signOutFunction();
 
         // Get User Details
-        textView = rootView.findViewById(R.id.textView);
+        TextView textView = rootView.findViewById(R.id.textView);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null)
             if (user.getDisplayName() != null) {
@@ -56,7 +55,7 @@ public class ProfileFragment extends Fragment {
             }
 
         //Displaying Credits
-        creditsbtn = rootView.findViewById(R.id.button9);
+        Button creditsbtn = rootView.findViewById(R.id.button9);
         creditsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +64,7 @@ public class ProfileFragment extends Fragment {
         });
 
         //order history
-        order = rootView.findViewById(R.id.button3);
+        Button order = rootView.findViewById(R.id.button3);
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +77,7 @@ public class ProfileFragment extends Fragment {
         });
 
         //share
-        share = rootView.findViewById(R.id.button10);
+        Button share = rootView.findViewById(R.id.button10);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

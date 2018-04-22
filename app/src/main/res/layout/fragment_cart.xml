@@ -37,10 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
                 android:fontFamily="cursive"
                 android:text="@string/empty_cart"
                 android:textAlignment="center"
@@ -56,6 +53,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="40dp"
+                android:contentDescription="@string/empty_cart"
                 android:src="@drawable/empty_cart" />
 
             <Button
@@ -63,10 +61,7 @@
                 android:layout_width="260dp"
                 android:layout_height="47dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
                 android:background="@color/colorPrimaryLight"
                 android:elevation="20dp"
                 android:text="@string/go_back_to_menu"

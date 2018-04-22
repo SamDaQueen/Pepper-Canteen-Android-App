@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
-import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MobileAds.initialize(this, "ca-app-pub-4677501330220530~1273349880");
+        //MobileAds.initialize(this, "ca-app-pub-4677501330220530~1273349880");
         loadFragment(new CategoryFragment());           //loading the default fragment
 
         BottomNavigationView navigation = findViewById(R.id.navigation);

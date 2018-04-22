@@ -84,11 +84,15 @@
 
     <style name="profileButtons" parent="AppTheme">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:layout_height">47dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">20dp</item>
+        <item name="android:layout_marginEnd">20dp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:elevation">16dp</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:background">@color/colorPrimaryLight</item>
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
     <style name="linkedin">
