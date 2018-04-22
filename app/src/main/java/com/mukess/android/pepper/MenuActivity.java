@@ -215,7 +215,7 @@ public class MenuActivity extends AppCompatActivity {
                         MenuActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                String cart = " Cart Total: " + getResources().getString(R.string.rs) + total;
+                                String cart = " " + getResources().getString(R.string.rs) + total;
                                 textView.setText(cart);
                             }
                         });

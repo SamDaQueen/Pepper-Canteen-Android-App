@@ -64,7 +64,7 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
                     total += Float.parseFloat(String.valueOf(item.getPrice()));
                 } else
-                    Toast.makeText(getContext(), "Quantity > 25? Invite us to the party :)", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Quantity > 25? Invite us to the party :)", Toast.LENGTH_SHORT).show();
             }
         });
         decrement.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +80,7 @@ public class MenuAdapter extends ArrayAdapter<MenuItem> {
 
                     total -= Float.parseFloat(String.valueOf(item.getPrice()));
                 } else
-                    Toast.makeText(getContext(), "Quantity < 0? You're trying to sell??", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Quantity < 0? You're trying to sell??", Toast.LENGTH_SHORT).show();
             }
         });
         return convertView;
